@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Simple Todo List with Next.js 14 and NextAuth.js
 
-## Getting Started
+<a name="readme-top"></a>
 
-First, run the development server:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<!-- ABOUT THE PROJECT -->
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About The Project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Welcome to our Next.js Todo List App! This project is a simple yet powerful application built using Next.js, a popular React framework known for its performance, flexibility, and ease of use.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Purpose
 
-## Learn More
+The purpose of this project is to provide users with a convenient way to manage their tasks and stay organized. Whether you're a student juggling assignments, a professional managing projects, or simply someone looking to keep track of daily chores, our todo list app is here to help you stay productive.
 
-To learn more about Next.js, take a look at the following resources:
+### Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Task Management: Easily add, update, and delete tasks.
+Date Picker: Select due dates for your tasks using a user-friendly date picker.
+Task Details: View additional details for each task, such as its due date and completion status.
+Responsive Design: Enjoy a seamless experience across devices, from desktops to mobile phones.
+Customization: Personalize your todo list with custom task titles and due dates.
+User Authentication: Coming soon! We're working on adding user authentication to allow multiple users to manage their own todo lists securely.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This is a simple todo list application that allows users to create, manage, and mark tasks as complete. Users can register and log in to keep track of their todos.
 
-## Deploy on Vercel
+### Built With
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [![Next][Next.js]][Next-url]
+- [![React][React.js]][React-url]
+- [![Vue][Vue.js]][Vue-url]
+- [![Angular][Angular.io]][Angular-url]
+- [![Svelte][Svelte.dev]][Svelte-url]
+- [![Laravel][Laravel.com]][Laravel-url]
+- [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+- [![JQuery][JQuery.com]][JQuery-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+├── app
+│ ├── (auth) # UI components for unauthenticated
+│ │ ├── login
+│ │ └── signup
+│ ├── about-us
+│ ├── contact-us
+│ ├── dashboard
+│ │ └── todo # todo Feature
+│ ├── layout.tsx # Root layout component
+│ ├── global.css # Global stylesheet (optional)
+│ └── font.css # Root layout (optional)
+├── components
+│ └── sidenav
+├── lib # Server actions , utilities and custom logic.
+├── package.json
+└── README.md
+
+<!-- Features -->
+
+## Current Features
+
+- [x] Signup an account
+- [x] Login authentication
+- [x] Todo List Table
+  - [x] Search Todo By Name
+  - [ ] Search Todo By Date
+  - [x] Edit/Update Todo List and Title
+  - [x] Delete Todo Data
+  - [x] View Todo Data
