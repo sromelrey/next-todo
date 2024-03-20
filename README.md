@@ -75,7 +75,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 │ ├── layout.tsx # Root layout component
 │ ├── global.css # Global stylesheet (optional)
 │ └── font.css # Root layout (optional)
-├── components
+├── components # Reusable UI components
 │ └── sidenav
 ├── lib # Server actions , utilities and custom logic.
 ├── package.json
