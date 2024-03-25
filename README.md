@@ -28,6 +28,13 @@
   </ol>
 </details>
 
+## To run this app locally
+
+```bash
+npm install # will install the packages
+npm run dev
+```
+
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
@@ -49,21 +56,8 @@ User Authentication: Coming soon! We're working on adding user authentication to
 
 This is a simple todo list application that allows users to create, manage, and mark tasks as complete. Users can register and log in to keep track of their todos.
 
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-- [![Next][Next.js]][Next-url]
-- [![React][React.js]][React-url]
-- [![Vue][Vue.js]][Vue-url]
-- [![Angular][Angular.io]][Angular-url]
-- [![Svelte][Svelte.dev]][Svelte-url]
-- [![Laravel][Laravel.com]][Laravel-url]
-- [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-- [![JQuery][JQuery.com]][JQuery-url]
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+.
 ├── app # Root application component contains all the routes, components, and logic for the application.
 │ ├── (auth) # Route Group for Authentication
 │ │ ├── login
