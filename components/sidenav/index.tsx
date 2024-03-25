@@ -1,7 +1,7 @@
-"use client";
+"use server";
+import { signOut } from "@/auth";
 import NavLinks from "./nav-links";
 import { PowerIcon } from "@heroicons/react/24/outline";
-import { signOut } from "@/auth";
 
 export default async function SideNav() {
   return (
@@ -11,7 +11,7 @@ export default async function SideNav() {
         <div className='hidden h-auto w-full grow rounded-md bg-gray-50 md:block'></div>
         <form
           action={async () => {
-            // "use server";
+            "use server";
             await signOut();
           }}
         >

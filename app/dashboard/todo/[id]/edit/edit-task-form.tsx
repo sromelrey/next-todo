@@ -21,7 +21,7 @@ export default async function editTaskForm({ data }: any) {
 
   const handleSaveTodo = (e: any) => {
     e.preventDefault();
-    console.log();
+
     dispatch({
       id: data.id,
       dateSelected: data.date

@@ -80,8 +80,8 @@ export async function updateTodo(prevState: any, formData: any) {
     };
   }
 
-  revalidatePath("/dashboard/invoices");
-  redirect("/dashboard/invoices");
+  revalidatePath("/dashboard/todo");
+  redirect("/dashboard/todo");
 }
 
 export async function deleteTodo(id: string) {
@@ -93,17 +93,13 @@ export async function deleteTodo(id: string) {
     };
   }
 
-  revalidatePath("/dashboard/invoices");
+  revalidatePath("/dashboard/todo");
 }
 
 export async function addTask(prevState: any, formData: FormData | any) {
-  let tasks = [];
-  if (!formData?.isUpdating) {
-    tasks.push({ name: formData, status: "pending" });
+  let tasks: { name: any; status: string }[] = [];
 
-    return prevState ? [...prevState, ...tasks] : tasks;
-  }
-  tasks = formData.state;
+  tasks = formData.state || tasks;
   tasks.push({ name: formData.formData, status: "pending" });
   return tasks;
 }

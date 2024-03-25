@@ -23,7 +23,8 @@ export const authConfig = {
         )
           return true;
       }
-      return false;
+
+      return true;
     },
     async session({ session, user }) {
       // session.user.id = user.id;

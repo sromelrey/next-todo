@@ -64,13 +64,13 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-├── app # Root application component
-│ ├── (auth) # UI components for unauthorized access
+├── app # Root application component contains all the routes, components, and logic for the application.
+│ ├── (auth) # Route Group for Authentication
 │ │ ├── login
 │ │ └── signup
 │ ├── about-us
 │ ├── contact-us
-│ ├── dashboard
+│ ├── dashboard // Route Group for Authenticated Routes (assuming "dashboard" for authenticated area)
 │ │ └── todo # todo Feature
 │ ├── layout.tsx # Root layout component
 │ ├── global.css # Global stylesheet (optional)

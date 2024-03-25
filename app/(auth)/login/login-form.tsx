@@ -12,8 +12,6 @@ import Link from "next/link";
 
 import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/lib/auth/authActions";
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 
 export default function LoginForm() {
   const { pending } = useFormStatus();
@@ -73,10 +71,29 @@ export default function LoginForm() {
             Don't have an account?
           </h1>
           <Link
-            href='/signup'
+            href={`/signup`}
+            shallow
             className='ml-2 mb-3 mt-5 block text-lg font-medium text-blue-500'
           >
             Sign Up
+          </Link>
+        </div>
+        <div className='flex flex-row text-center justify-center'>
+          <Link
+            href={`/about-us`}
+            shallow
+            className='ml-2 mb-3 mt-5 block text-lg font-medium text-blue-500'
+          >
+            About Us
+          </Link>
+        </div>
+        <div className='flex flex-row text-center justify-center'>
+          <Link
+            href={`/contact-us`}
+            shallow
+            className='ml-2 mb-3 mt-5 block text-lg font-medium text-blue-500'
+          >
+            Contact Us
           </Link>
         </div>
         <Button className='mt-4 w-full' aria-disabled={pending}>
