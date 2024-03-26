@@ -16,12 +16,12 @@ export const authConfig = {
       } else if (isLoggedIn) {
         return Response.redirect(new URL("/dashboard/todo", nextUrl));
       } else if (!isOnDashboard && !isLoggedIn) {
-        if (
-          nextUrl.pathname.startsWith("/about-us") ||
-          nextUrl.pathname.startsWith("/contact-us")
-        )
-          return true;
-        else return false;
+        // if (
+        //   nextUrl.pathname.startsWith("/about-us") ||
+        //   nextUrl.pathname.startsWith("/contact-us")
+        // )
+        return true;
+        // else return false;
       }
 
       return true;

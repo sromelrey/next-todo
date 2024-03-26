@@ -42,6 +42,7 @@ export default function LoginForm() {
               type='email'
               name='email'
               placeholder='Enter your email address'
+              isInline
               required
               icon={
                 <AtSymbolIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
@@ -58,6 +59,7 @@ export default function LoginForm() {
               type='password'
               name='password'
               placeholder='Enter password'
+              isInline
               required
               minLength={6}
               icon={
@@ -96,9 +98,7 @@ export default function LoginForm() {
             Contact Us
           </Link>
         </div>
-        <Button className='mt-4 w-full' aria-disabled={pending}>
-          Login <ArrowRightIcon className='ml-auto h-5 w-5 text-gray-50' />
-        </Button>
+        <LoginButton />
         <div
           className='flex h-8 items-end space-x-1'
           aria-live='polite'
@@ -113,5 +113,15 @@ export default function LoginForm() {
         </div>
       </div>
     </form>
+  );
+}
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button className='mt-4 w-full' aria-disabled={pending}>
+      Log in <ArrowRightIcon className='ml-auto h-5 w-5 text-gray-50' />
+    </Button>
   );
 }
