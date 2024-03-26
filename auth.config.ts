@@ -10,7 +10,6 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith("/dashboard/todo");
-
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false;
@@ -22,6 +21,7 @@ export const authConfig = {
           nextUrl.pathname.startsWith("/contact-us")
         )
           return true;
+        else return false;
       }
 
       return true;
