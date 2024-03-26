@@ -14,7 +14,6 @@ import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/lib/auth/authActions";
 
 export default function LoginForm() {
-  const { pending } = useFormStatus();
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (

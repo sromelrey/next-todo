@@ -10,13 +10,11 @@ import {
 import Link from "next/link";
 import { createAccount } from "@/lib/auth/actions";
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormState, useFormStatus } from "react-dom";
 
 export default function SignUpForm() {
-  const initialState = { message: '', errors: {} };
+  const initialState = { message: "", errors: {} };
   const [state, dispatch] = useFormState(createAccount, initialState);
-
-  const { pending } = useFormStatus();
 
   return (
     <form action={dispatch} className='space-y-3'>
@@ -41,20 +39,22 @@ export default function SignUpForm() {
             id='fullName'
             type='text'
             name='fullName'
+            isInline
             placeholder='Enter your Full Name'
             required
           />
-          {state.errors?.fullName ? (
+          {state.errors?.fullName && (
             <div
-              id='customer-error'
+              className='flex h-8 items-end space-x-1'
               aria-live='polite'
-              className='mt-2 text-sm text-red-500'
+              aria-atomic='true'
             >
-              {state.errors.fullName.map((error: string) => (
-                <p key={error}>{error}</p>
-              ))}
+              <>
+                <ExclamationCircleIcon className='h-5 w-5 text-red-500' />
+                <p className='text-sm text-red-500'>{state.errors?.fullName}</p>
+              </>
             </div>
-          ) : null}
+          )}
 
           <TextBox
             classLabel='mb-3 mt-5 block text-xs font-medium text-gray-900'
@@ -64,12 +64,25 @@ export default function SignUpForm() {
             id='email'
             type='email'
             name='email'
+            isInline
             placeholder='Enter your email address'
             required
             icon={
               <AtSymbolIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
             }
           />
+          {state.errors?.email && (
+            <div
+              className='flex h-8 items-end space-x-1'
+              aria-live='polite'
+              aria-atomic='true'
+            >
+              <>
+                <ExclamationCircleIcon className='h-5 w-5 text-red-500' />
+                <p className='text-sm text-red-500'>{state.errors?.email}</p>
+              </>
+            </div>
+          )}
 
           <div className='mt-4'>
             <TextBox
@@ -79,6 +92,7 @@ export default function SignUpForm() {
               label='Password'
               type='password'
               name='password'
+              isInline
               placeholder='Enter password'
               required
               minLength={6}
@@ -86,22 +100,52 @@ export default function SignUpForm() {
                 <KeyIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
               }
             />
+            {state.errors?.password && (
+              <div
+                className='flex h-8 items-end space-x-1'
+                aria-live='polite'
+                aria-atomic='true'
+              >
+                <>
+                  <ExclamationCircleIcon className='h-5 w-5 text-red-500' />
+                  <p className='text-sm text-red-500'>
+                    {state.errors?.password}
+                  </p>
+                </>
+              </div>
+            )}
           </div>
           <div className='mt-4'>
             <TextBox
               classLabel='mb-3 mt-5 block text-xs font-medium text-gray-900'
               classInput='peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500'
-              htmlFor='password'
+              htmlFor='confirmPassword'
               label='Confirm Password'
+              id='confirmPassword'
               type='password'
-              name='password'
+              name='confirmPassword'
               placeholder='Enter Confirm password'
               required
+              isInline
               minLength={6}
               icon={
                 <KeyIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
               }
             />
+            {state.errors?.confirmPassword && (
+              <div
+                className='flex h-8 items-end space-x-1'
+                aria-live='polite'
+                aria-atomic='true'
+              >
+                <>
+                  <ExclamationCircleIcon className='h-5 w-5 text-red-500' />
+                  <p className='text-sm text-red-500'>
+                    {state.errors?.confirmPassword}
+                  </p>
+                </>
+              </div>
+            )}
           </div>
         </div>
         <div className='flex flex-row text-center justify-center'>
@@ -115,10 +159,19 @@ export default function SignUpForm() {
             Sign In
           </Link>
         </div>
-        <Button className='mt-4 w-full text-center' aria-disabled={pending}>
-          Create Account
-        </Button>
+
+        <SigUpButton />
       </div>
     </form>
+  );
+}
+
+function SigUpButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button className='mt-4 w-full' aria-disabled={pending}>
+      Create Account
+    </Button>
   );
 }

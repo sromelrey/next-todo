@@ -1,7 +1,5 @@
-
-
 import { z } from "zod";
-import {sql} from '@vercel/postgres'
+import { sql } from "@vercel/postgres";
 
 import { getUser } from "./data";
 import { revalidatePath } from "next/cache";
@@ -14,32 +12,43 @@ export type State = {
     //* this type will need update on comments or what this is used for
     fullName?: string[];
     password?: string[];
+    confirmPassword?: string[];
     email?: string[];
   };
   message?: string;
 };
 
-export const UserSchema = z.object({
-  fullName: z.string().trim().min(3, "Full name is required"),
-  email: z.string().email("Invalid email format").trim(),
-  password: z
-    .string()
-    .min(6, "Password must be at least 6 characters long")
-    .trim(),
-});
+export const UserSchema = z
+  .object({
+    fullName: z.string().trim().min(3, "Full name is required"),
+    email: z.string().email("Invalid email format").trim(),
+    password: z
+      .string()
+      .min(6, "Password must be at least 6 characters long")
+      .trim(),
+    confirmPassword: z
+      .string()
+      .min(6, "Password must be at least 6 characters long")
+      .trim(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"], // This will highlight the `confirmPassword` field if there's an error
+  });
 
 export async function createAccount(prevState: State, formData: FormData) {
   const validatedFields = UserSchema.safeParse({
     email: formData.get("email"),
     fullName: formData.get("fullName"),
     password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword"),
   });
-  console.log('runned')
+
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Invoice.",
+      message: "Missing Fields. Failed to Create Account.",
     };
   }
 
@@ -52,7 +61,8 @@ export async function createAccount(prevState: State, formData: FormData) {
 
   if (existingUser) {
     return {
-      message: "Email already exists",
+      errors: { email: ["Email already exists"] },
+      message: "Failed to Create Account.",
     };
   }
 
@@ -69,8 +79,6 @@ export async function createAccount(prevState: State, formData: FormData) {
       message: "Database Error: Failed to Create Account.",
     }; // Include the original error for debugging
   } finally {
-
     redirect("/login");
   }
 }
-
